@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:empresas_flutter/app/data/external/company_datasource/company_data_source_impl.dart';
+import 'package:empresas_flutter/app/data/repositories/company_repository_impl.dart';
 import 'package:empresas_flutter/app/data/services/auth_service_impl.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -17,7 +19,13 @@ void main() {
 
   final authService = AuthServiceImpl(auth: oauth);
 
+  final companyDataSource = CompanyDataSourceImpl(oAuth: oauth);
+  final companyRepository = CompanyRepositoryImpl(
+    companyDatasource: companyDataSource,
+  );
+
   runApp(AppWidget(
     authService: authService,
+    companyRepository: companyRepository,
   ));
 }

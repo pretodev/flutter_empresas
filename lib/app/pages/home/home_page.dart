@@ -5,6 +5,7 @@ import 'package:empresas_flutter/app/pages/home/components/no_results_view.dart'
 import 'package:empresas_flutter/app/pages/home/components/results_count_view.dart';
 import 'package:empresas_flutter/app/pages/home/components/searcher.dart';
 import 'package:empresas_flutter/app/pages/home/cubit/home_cubit.dart';
+import 'package:empresas_flutter/app/utils/delayed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

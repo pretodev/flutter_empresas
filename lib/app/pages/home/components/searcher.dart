@@ -1,3 +1,4 @@
+import 'package:empresas_flutter/app/utils/delayed.dart';
 import 'package:flutter/material.dart';
 
 class Searcher extends StatefulWidget {
@@ -20,6 +21,8 @@ class _SearcherState extends State<Searcher> {
 
   bool minBg = false;
 
+  final delayed = Delayed();
+
   void setBgMin(bool min) {
     setState(() {
       minBg = min;
@@ -32,7 +35,16 @@ class _SearcherState extends State<Searcher> {
     } else {
       setBgMin(false);
     }
-    widget.onQueryChanged(text);
+    delayed(
+      () => widget.onQueryChanged(text),
+      delay: const Duration(milliseconds: 400),
+    );
+  }
+
+  @override
+  void dispose() {
+    delayed.dispose();
+    super.dispose();
   }
 
   @override
