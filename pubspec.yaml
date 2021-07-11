@@ -16,6 +16,8 @@ dependencies:
   dio: ^4.0.0
   flutter_secure_storage: ^4.2.0
   flow_builder: ^0.0.3
+  google_fonts: ^2.1.0
+  flutter_svg: ^0.22.0
 
 dev_dependencies:
   bloc_test: ^8.0.2
@@ -28,8 +30,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
+    - assets/images/home_bg.png
+    - assets/images/home_min_bg.png
     - assets/images/splash_bg.png
     - assets/images/logo_home.png
+    - assets/images/ellipse.svg
 
   
   

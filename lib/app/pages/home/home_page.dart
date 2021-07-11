@@ -1,3 +1,5 @@
+import 'package:empresas_flutter/app/pages/home/components/ioasys_loading.dart';
+import 'package:empresas_flutter/app/pages/home/components/searcher.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -6,10 +8,19 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Searcher(
+            onQueryChanged: (query) {},
+          ),
+          Expanded(
+            child: Center(
+              child: IoasysLoading(),
+            ),
+          )
+        ],
       ),
-      body: Container(),
     );
   }
 }

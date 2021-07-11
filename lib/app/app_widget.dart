@@ -5,6 +5,8 @@ import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'theme/ioasys_theme.dart';
+
 class AppWidget extends StatelessWidget {
   final AuthService _authService;
 
@@ -33,6 +35,7 @@ class _AppWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Empresas',
+      theme: IoasysTheme.primary(context),
       home: FlowBuilder<AppState>(
         state: context.select((AppBloc bloc) => bloc.state),
         onGeneratePages: onGenerateAppViewPages,
