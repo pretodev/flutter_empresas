@@ -1,5 +1,6 @@
 import 'package:empresas_flutter/app/bloc/app_bloc.dart';
 import 'package:empresas_flutter/app/data/services/interfaces/auth_service.dart';
+import 'package:empresas_flutter/app/pages/home/cubit/home_cubit.dart';
 import 'package:empresas_flutter/app/routes/routes.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +23,8 @@ class AppWidget extends StatelessWidget {
       ],
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (_) => AppBloc(authService: _authService))
+          BlocProvider(create: (_) => AppBloc(authService: _authService)),
+          BlocProvider(create: (_) => HomeCubit()),
         ],
         child: _AppWidget(),
       ),

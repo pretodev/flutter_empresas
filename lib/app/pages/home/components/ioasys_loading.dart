@@ -4,12 +4,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 class IoasysLoading extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Container(
       alignment: Alignment.center,
-      children: [
-        IoasysLoadingElipse(size: 48.0),
-        IoasysLoadingElipse(size: 72.0, reverse: true),
-      ],
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          IoasysLoadingElipse(size: 48.0),
+          IoasysLoadingElipse(size: 72.0, reverse: true),
+        ],
+      ),
     );
   }
 }
