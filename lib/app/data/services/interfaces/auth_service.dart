@@ -1,8 +1,11 @@
+import 'package:empresas_flutter/app/data/models/credential.dart';
 import 'package:empresas_flutter/app/data/models/logged_user.dart';
 import 'package:fpdart/fpdart.dart';
 
 abstract class AuthService {
-  TaskOption<LoggedUser> getCurrentUser();
+  const AuthService();
 
-  TaskEither<Exception, LoggedUser> login();
+  Task<bool> isAuthenticated();
+
+  TaskEither<Exception, LoggedUser> login(Credential credential);
 }
