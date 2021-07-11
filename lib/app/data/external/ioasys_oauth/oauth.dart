@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 
 /// Token
-abstract class OAuthToken<T extends Object> {
+abstract class OAuthToken<T> {
   const OAuthToken();
 
   T? get data;
