@@ -13,11 +13,11 @@ import 'pages/login/cubit/login_cubit.dart';
 import 'theme/ioasys_theme.dart';
 
 class AppWidget extends StatelessWidget {
-  const AppWidget(
-      {Key? key,
-      required AuthService authService,
-      required CompanyRepository companyRepository})
-      : _authService = authService,
+  const AppWidget({
+    Key? key,
+    required AuthService authService,
+    required CompanyRepository companyRepository,
+  })  : _authService = authService,
         _companyRepository = companyRepository,
         super(key: key);
 
@@ -66,7 +66,7 @@ class __AppWidgetState extends State<_AppWidget> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Empresas',
+      title: 'Empresas Flutter',
       theme: IoasysTheme.primary(context),
       navigatorKey: _navigatorKey,
       builder: (context, child) {
