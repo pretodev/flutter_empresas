@@ -53,24 +53,41 @@ class AppWidget extends StatelessWidget {
   }
 }
 
-class _AppWidget extends StatelessWidget {
+class _AppWidget extends StatefulWidget {
+  @override
+  __AppWidgetState createState() => __AppWidgetState();
+}
+
+class __AppWidgetState extends State<_AppWidget> {
+  final _navigatorKey = GlobalKey<NavigatorState>();
+
+  NavigatorState get _navigator => _navigatorKey.currentState!;
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Empresas',
       theme: IoasysTheme.primary(context),
-      home: BlocListener<AppBloc, AppState>(
-        listener: (context, state) {
-          if (state == AppState.authenticated()) {
-            Navigator.pushAndRemoveUntil(
-                context, HomePage.route(), (_) => false);
-          } else if (state == AppState.unauthenticated()) {
-            Navigator.pushAndRemoveUntil(
-                context, LoginPage.route(), (_) => false);
-          }
-        },
-        child: SplashPage(),
-      ),
+      navigatorKey: _navigatorKey,
+      builder: (context, child) {
+        return BlocListener<AppBloc, AppState>(
+          listener: (_, state) {
+            if (state is AppUnauthenticated) {
+              _navigator.pushAndRemoveUntil<void>(
+                LoginPage.route(),
+                (route) => false,
+              );
+            } else if (state is AppAuthenticated) {
+              _navigator.pushAndRemoveUntil<void>(
+                HomePage.route(),
+                (route) => false,
+              );
+            }
+          },
+          child: child,
+        );
+      },
+      onGenerateRoute: (_) => SplashPage.route(),
     );
   }
 }

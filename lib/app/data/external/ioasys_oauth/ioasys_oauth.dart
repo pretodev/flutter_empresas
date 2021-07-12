@@ -42,4 +42,9 @@ class IoasysOAuth extends OAuth<IoasysOAuthToken> {
 
   @override
   Dio get client => _dio;
+
+  @override
+  Future<void> resetToken() {
+    return _storage.clear();
+  }
 }

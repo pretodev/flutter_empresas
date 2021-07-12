@@ -19,6 +19,10 @@ class _$AppEventTearOff {
   AppCheckLogin checkLogin() {
     return const AppCheckLogin();
   }
+
+  AppLogout logout() {
+    return const AppLogout();
+  }
 }
 
 /// @nodoc
@@ -29,22 +33,26 @@ mixin _$AppEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkLogin,
+    required TResult Function() logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkLogin,
+    TResult Function()? logout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AppCheckLogin value) checkLogin,
+    required TResult Function(AppLogout value) logout,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AppCheckLogin value)? checkLogin,
+    TResult Function(AppLogout value)? logout,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -105,6 +113,7 @@ class _$AppCheckLogin implements AppCheckLogin {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() checkLogin,
+    required TResult Function() logout,
   }) {
     return checkLogin();
   }
@@ -113,6 +122,7 @@ class _$AppCheckLogin implements AppCheckLogin {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? checkLogin,
+    TResult Function()? logout,
     required TResult orElse(),
   }) {
     if (checkLogin != null) {
@@ -125,6 +135,7 @@ class _$AppCheckLogin implements AppCheckLogin {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AppCheckLogin value) checkLogin,
+    required TResult Function(AppLogout value) logout,
   }) {
     return checkLogin(this);
   }
@@ -133,6 +144,7 @@ class _$AppCheckLogin implements AppCheckLogin {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AppCheckLogin value)? checkLogin,
+    TResult Function(AppLogout value)? logout,
     required TResult orElse(),
   }) {
     if (checkLogin != null) {
@@ -144,6 +156,89 @@ class _$AppCheckLogin implements AppCheckLogin {
 
 abstract class AppCheckLogin implements AppEvent {
   const factory AppCheckLogin() = _$AppCheckLogin;
+}
+
+/// @nodoc
+abstract class $AppLogoutCopyWith<$Res> {
+  factory $AppLogoutCopyWith(AppLogout value, $Res Function(AppLogout) then) =
+      _$AppLogoutCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$AppLogoutCopyWithImpl<$Res> extends _$AppEventCopyWithImpl<$Res>
+    implements $AppLogoutCopyWith<$Res> {
+  _$AppLogoutCopyWithImpl(AppLogout _value, $Res Function(AppLogout) _then)
+      : super(_value, (v) => _then(v as AppLogout));
+
+  @override
+  AppLogout get _value => super._value as AppLogout;
+}
+
+/// @nodoc
+
+class _$AppLogout implements AppLogout {
+  const _$AppLogout();
+
+  @override
+  String toString() {
+    return 'AppEvent.logout()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is AppLogout);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() checkLogin,
+    required TResult Function() logout,
+  }) {
+    return logout();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? checkLogin,
+    TResult Function()? logout,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AppCheckLogin value) checkLogin,
+    required TResult Function(AppLogout value) logout,
+  }) {
+    return logout(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AppCheckLogin value)? checkLogin,
+    TResult Function(AppLogout value)? logout,
+    required TResult orElse(),
+  }) {
+    if (logout != null) {
+      return logout(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AppLogout implements AppEvent {
+  const factory AppLogout() = _$AppLogout;
 }
 
 /// @nodoc

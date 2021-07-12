@@ -1,3 +1,4 @@
+import 'package:empresas_flutter/app/bloc/app_bloc.dart';
 import 'package:empresas_flutter/app/data/models/company.dart';
 import 'package:empresas_flutter/app/pages/details/details_page.dart';
 import 'package:empresas_flutter/app/pages/home/components/company_view.dart';
@@ -51,7 +52,18 @@ class HomePage extends StatelessWidget {
                   }, childCount: state.companies.length + 1),
                 );
               }
-              return SliverToBoxAdapter(child: Container());
+              return SliverFillRemaining(
+                child: Container(
+                  alignment: Alignment.bottomCenter,
+                  margin: const EdgeInsets.all(32.0),
+                  child: TextButton(
+                    child: Text('Sair'),
+                    onPressed: () {
+                      context.read<AppBloc>().add(AppEvent.logout());
+                    },
+                  ),
+                ),
+              );
             },
           )
         ],

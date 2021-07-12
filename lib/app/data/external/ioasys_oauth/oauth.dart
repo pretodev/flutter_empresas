@@ -34,6 +34,8 @@ abstract class OAuth<Token extends OAuthToken> {
     required String password,
   });
 
+  Future<void> resetToken();
+
   Dio get client;
 }
 

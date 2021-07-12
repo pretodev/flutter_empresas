@@ -24,7 +24,14 @@ class AppBloc extends Bloc<AppEvent, AppState> {
   ) async* {
     if (event is AppCheckLogin) {
       yield* _mapCheckloginToState();
+    } else if (event is AppLogout) {
+      yield* _mapLogoutToState();
     }
+  }
+
+  Stream<AppState> _mapLogoutToState() async* {
+    await _authService.logout().run();
+    yield AppState.unauthenticated();
   }
 
   Stream<AppState> _mapCheckloginToState() async* {

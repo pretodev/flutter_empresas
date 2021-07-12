@@ -28,4 +28,12 @@ class AuthServiceImpl extends AuthService {
       }
     });
   }
+
+  @override
+  Task<Unit> logout() {
+    return Task(() async {
+      await _auth.resetToken();
+      return unit;
+    });
+  }
 }

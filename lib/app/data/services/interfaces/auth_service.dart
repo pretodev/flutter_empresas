@@ -8,4 +8,6 @@ abstract class AuthService {
   Task<bool> isAuthenticated();
 
   TaskEither<Exception, LoggedUser> login(Credential credential);
+
+  Task<Unit> logout();
 }
