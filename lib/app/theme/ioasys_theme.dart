@@ -7,6 +7,17 @@ class IoasysTheme {
     final textTheme = Theme.of(context).textTheme;
     return ThemeData(
       textTheme: GoogleFonts.rubikTextTheme(textTheme),
+      appBarTheme: AppBarTheme(
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        textTheme: GoogleFonts.rubikTextTheme(textTheme),
+        actionsIconTheme: IconThemeData(
+          color: IoasysColors.primary,
+        ),
+        iconTheme: IconThemeData(
+          color: IoasysColors.primary,
+        ),
+      ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: IoasysColors.inputBg,

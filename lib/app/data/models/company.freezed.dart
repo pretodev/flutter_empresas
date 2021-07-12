@@ -16,10 +16,16 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$CompanyTearOff {
   const _$CompanyTearOff();
 
-  _Company call({required int id, required String name}) {
+  _Company call(
+      {required int id,
+      required String name,
+      String description = '',
+      String photoUrl = ''}) {
     return _Company(
       id: id,
       name: name,
+      description: description,
+      photoUrl: photoUrl,
     );
   }
 }
@@ -31,6 +37,8 @@ const $Company = _$CompanyTearOff();
 mixin _$Company {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get description => throw _privateConstructorUsedError;
+  String get photoUrl => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CompanyCopyWith<Company> get copyWith => throw _privateConstructorUsedError;
@@ -40,7 +48,7 @@ mixin _$Company {
 abstract class $CompanyCopyWith<$Res> {
   factory $CompanyCopyWith(Company value, $Res Function(Company) then) =
       _$CompanyCopyWithImpl<$Res>;
-  $Res call({int id, String name});
+  $Res call({int id, String name, String description, String photoUrl});
 }
 
 /// @nodoc
@@ -55,6 +63,8 @@ class _$CompanyCopyWithImpl<$Res> implements $CompanyCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? description = freezed,
+    Object? photoUrl = freezed,
   }) {
     return _then(_value.copyWith(
       id: id == freezed
@@ -65,6 +75,14 @@ class _$CompanyCopyWithImpl<$Res> implements $CompanyCopyWith<$Res> {
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      photoUrl: photoUrl == freezed
+          ? _value.photoUrl
+          : photoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -74,7 +92,7 @@ abstract class _$CompanyCopyWith<$Res> implements $CompanyCopyWith<$Res> {
   factory _$CompanyCopyWith(_Company value, $Res Function(_Company) then) =
       __$CompanyCopyWithImpl<$Res>;
   @override
-  $Res call({int id, String name});
+  $Res call({int id, String name, String description, String photoUrl});
 }
 
 /// @nodoc
@@ -90,6 +108,8 @@ class __$CompanyCopyWithImpl<$Res> extends _$CompanyCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? description = freezed,
+    Object? photoUrl = freezed,
   }) {
     return _then(_Company(
       id: id == freezed
@@ -100,6 +120,14 @@ class __$CompanyCopyWithImpl<$Res> extends _$CompanyCopyWithImpl<$Res>
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
+      description: description == freezed
+          ? _value.description
+          : description // ignore: cast_nullable_to_non_nullable
+              as String,
+      photoUrl: photoUrl == freezed
+          ? _value.photoUrl
+          : photoUrl // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -107,16 +135,27 @@ class __$CompanyCopyWithImpl<$Res> extends _$CompanyCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Company extends _Company {
-  const _$_Company({required this.id, required this.name}) : super._();
+  const _$_Company(
+      {required this.id,
+      required this.name,
+      this.description = '',
+      this.photoUrl = ''})
+      : super._();
 
   @override
   final int id;
   @override
   final String name;
+  @JsonKey(defaultValue: '')
+  @override
+  final String description;
+  @JsonKey(defaultValue: '')
+  @override
+  final String photoUrl;
 
   @override
   String toString() {
-    return 'Company(id: $id, name: $name)';
+    return 'Company(id: $id, name: $name, description: $description, photoUrl: $photoUrl)';
   }
 
   @override
@@ -126,14 +165,22 @@ class _$_Company extends _Company {
             (identical(other.id, id) ||
                 const DeepCollectionEquality().equals(other.id, id)) &&
             (identical(other.name, name) ||
-                const DeepCollectionEquality().equals(other.name, name)));
+                const DeepCollectionEquality().equals(other.name, name)) &&
+            (identical(other.description, description) ||
+                const DeepCollectionEquality()
+                    .equals(other.description, description)) &&
+            (identical(other.photoUrl, photoUrl) ||
+                const DeepCollectionEquality()
+                    .equals(other.photoUrl, photoUrl)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(id) ^
-      const DeepCollectionEquality().hash(name);
+      const DeepCollectionEquality().hash(name) ^
+      const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(photoUrl);
 
   @JsonKey(ignore: true)
   @override
@@ -142,13 +189,21 @@ class _$_Company extends _Company {
 }
 
 abstract class _Company extends Company {
-  const factory _Company({required int id, required String name}) = _$_Company;
+  const factory _Company(
+      {required int id,
+      required String name,
+      String description,
+      String photoUrl}) = _$_Company;
   const _Company._() : super._();
 
   @override
   int get id => throw _privateConstructorUsedError;
   @override
   String get name => throw _privateConstructorUsedError;
+  @override
+  String get description => throw _privateConstructorUsedError;
+  @override
+  String get photoUrl => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
   _$CompanyCopyWith<_Company> get copyWith =>

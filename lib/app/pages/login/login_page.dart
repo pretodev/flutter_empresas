@@ -9,7 +9,9 @@ import 'package:string_validator/string_validator.dart';
 import 'cubit/login_cubit.dart';
 
 class LoginPage extends StatelessWidget {
-  static Page page() => MaterialPage<void>(child: LoginPage());
+  static Route route() {
+    return MaterialPageRoute<void>(builder: (_) => LoginPage());
+  }
 
   final _key = GlobalKey<FormState>();
 

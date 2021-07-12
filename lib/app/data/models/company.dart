@@ -9,5 +9,7 @@ class Company with _$Company {
   const factory Company({
     required int id,
     required String name,
+    @Default('') String description,
+    @Default('') String photoUrl,
   }) = _Company;
 }

@@ -1,18 +1,22 @@
 import 'package:empresas_flutter/app/data/models/company.dart';
+import 'package:empresas_flutter/app/pages/details/details_page.dart';
 import 'package:empresas_flutter/app/pages/home/components/company_view.dart';
 import 'package:empresas_flutter/app/pages/home/components/ioasys_loading.dart';
 import 'package:empresas_flutter/app/pages/home/components/no_results_view.dart';
 import 'package:empresas_flutter/app/pages/home/components/results_count_view.dart';
 import 'package:empresas_flutter/app/pages/home/components/searcher.dart';
 import 'package:empresas_flutter/app/pages/home/cubit/home_cubit.dart';
-import 'package:empresas_flutter/app/utils/delayed.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class HomePage extends StatelessWidget {
-  static Page page() => MaterialPage<void>(child: HomePage());
+  static Route route() {
+    return MaterialPageRoute<void>(builder: (_) => HomePage());
+  }
 
-  void onCompanyClicked(Company company) {}
+  void onCompanyClicked(BuildContext context, Company company) {
+    Navigator.push(context, DetailsPage.route(company));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +45,8 @@ class HomePage extends StatelessWidget {
                     final itemIdx = index - 1;
                     return CompanyView(
                       company: state.companies[itemIdx],
-                      onClicked: onCompanyClicked,
+                      onClicked: (company) =>
+                          onCompanyClicked(context, company),
                     );
                   }, childCount: state.companies.length + 1),
                 );
@@ -51,13 +56,6 @@ class HomePage extends StatelessWidget {
           )
         ],
       ),
-
-      // body: Column(
-      //   crossAxisAlignment: CrossAxisAlignment.stretch,
-      //   children: [
-
-      //   ],
-      // ),
     );
   }
 }

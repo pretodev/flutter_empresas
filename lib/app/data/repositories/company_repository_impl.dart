@@ -17,4 +17,12 @@ class CompanyRepositoryImpl extends CompanyRepository {
       return Either.right(companies);
     });
   }
+
+  @override
+  TaskEither<Exception, Company> byId(int id) {
+    return TaskEither(() async {
+      final company = await _companyDatasource.getById(id);
+      return Either.right(company);
+    });
+  }
 }
