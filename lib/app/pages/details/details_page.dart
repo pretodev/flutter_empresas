@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:empresas_flutter/app/data/models/company.dart';
-import 'package:empresas_flutter/app/pages/home/components/ioasys_loading.dart';
+import 'package:empresas_flutter/app/components/ioasys_loading.dart';
 import 'package:empresas_flutter/app/utils/choose_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

@@ -2,7 +2,7 @@ import 'package:empresas_flutter/app/bloc/app_bloc.dart';
 import 'package:empresas_flutter/app/data/models/company.dart';
 import 'package:empresas_flutter/app/pages/details/details_page.dart';
 import 'package:empresas_flutter/app/pages/home/components/company_view.dart';
-import 'package:empresas_flutter/app/pages/home/components/ioasys_loading.dart';
+import 'package:empresas_flutter/app/components/ioasys_loading.dart';
 import 'package:empresas_flutter/app/pages/home/components/no_results_view.dart';
 import 'package:empresas_flutter/app/pages/home/components/results_count_view.dart';
 import 'package:empresas_flutter/app/pages/home/components/searcher.dart';

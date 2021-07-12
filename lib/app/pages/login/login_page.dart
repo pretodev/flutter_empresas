@@ -1,6 +1,7 @@
 import 'package:empresas_flutter/app/bloc/app_bloc.dart';
 import 'package:empresas_flutter/app/pages/login/components/error_view.dart';
 import 'package:empresas_flutter/app/pages/login/components/field.dart';
+import 'package:empresas_flutter/app/pages/login/components/page_loading.dart';
 import 'package:empresas_flutter/app/pages/login/components/password_form_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -26,42 +27,45 @@ class LoginPage extends StatelessWidget {
         body: BlocBuilder<LoginCubit, LoginState>(
           builder: (context, state) {
             final bloc = context.read<LoginCubit>();
-            return Form(
-              key: _key,
-              child: ListView(
-                children: [
-                  Field(
-                    labelText: 'Email',
-                    child: TextFormField(
-                      keyboardType: TextInputType.emailAddress,
-                      validator: (value) =>
-                          value!.isEmpty || !isEmail(value) ? '' : null,
-                      onChanged: bloc.setEmail,
-                    ),
+            return Stack(
+              children: [
+                Form(
+                  key: _key,
+                  child: ListView(
+                    children: [
+                      Field(
+                        labelText: 'Email',
+                        child: TextFormField(
+                          keyboardType: TextInputType.emailAddress,
+                          validator: (value) =>
+                              value!.isEmpty || !isEmail(value) ? '' : null,
+                          onChanged: bloc.setEmail,
+                        ),
+                      ),
+                      Field(
+                        labelText: 'Senha',
+                        child: PasswordFormField(
+                          validator: (value) => value!.isEmpty ? '' : null,
+                          onChanged: bloc.setPassword,
+                        ),
+                      ),
+                      if (state.status == LoginStatus.fail)
+                        ErrorView(message: state.error.toString()),
+                      Padding(
+                        padding: const EdgeInsets.all(24),
+                        child: ElevatedButton(
+                          child: Text('Entrar'),
+                          onPressed: () {
+                            if (!_key.currentState!.validate()) return;
+                            bloc.login();
+                          },
+                        ),
+                      ),
+                    ],
                   ),
-                  Field(
-                    labelText: 'Senha',
-                    child: PasswordFormField(
-                      validator: (value) => value!.isEmpty ? '' : null,
-                      onChanged: bloc.setPassword,
-                    ),
-                  ),
-                  if (state.status == LoginStatus.fail)
-                    ErrorView(message: state.error.toString()),
-                  Padding(
-                    padding: const EdgeInsets.all(24),
-                    child: ElevatedButton(
-                      child: Text('Entrar'),
-                      onPressed: state.status == LoginStatus.authenticated
-                          ? null
-                          : () {
-                              if (!_key.currentState!.validate()) return;
-                              bloc.login();
-                            },
-                    ),
-                  ),
-                ],
-              ),
+                ),
+                if (state.status == LoginStatus.authenticating) PageLoading(),
+              ],
             );
           },
         ),
