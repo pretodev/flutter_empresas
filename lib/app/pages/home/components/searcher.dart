@@ -30,7 +30,7 @@ class _SearcherState extends State<Searcher> {
   }
 
   void queryChanged(String text) {
-    if (text.length > 2) {
+    if (text.isNotEmpty) {
       setBgMin(true);
     } else {
       setBgMin(false);

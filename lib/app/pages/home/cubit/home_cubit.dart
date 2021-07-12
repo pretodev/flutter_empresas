@@ -18,9 +18,10 @@ class HomeCubit extends Cubit<HomeState> {
 
     emit(HomeState.loading());
     final result = await _companyRepository.search(query).run();
-    result.fold(
+    final newState = result.fold(
       (error) => HomeState.error(error: error),
       (companies) => HomeState.loaded(companies: companies),
     );
+    emit(newState);
   }
 }

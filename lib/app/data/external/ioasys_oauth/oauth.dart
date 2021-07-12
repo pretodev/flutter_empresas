@@ -59,5 +59,5 @@ class OAuthInterceptor extends Interceptor {
 
 /// OAuth Unauthorized User Error
 class UnauthorizedUser implements Exception {
-  String toString() => 'Credenciais invalidas. Tente novamente';
+  String toString() => 'Credenciais incorretas';
 }

@@ -7,6 +7,7 @@ import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'pages/login/cubit/login_cubit.dart';
 import 'theme/ioasys_theme.dart';
 
 class AppWidget extends StatelessWidget {
@@ -30,9 +31,15 @@ class AppWidget extends StatelessWidget {
       ],
       child: MultiBlocProvider(
         providers: [
-          BlocProvider(create: (_) => AppBloc(authService: _authService)),
           BlocProvider(
-              create: (_) => HomeCubit(companyRepository: _companyRepository)),
+            create: (_) => AppBloc(authService: _authService),
+          ),
+          BlocProvider(
+            create: (_) => HomeCubit(companyRepository: _companyRepository),
+          ),
+          BlocProvider(
+            create: (_) => LoginCubit(authService: _authService),
+          ),
         ],
         child: _AppWidget(),
       ),

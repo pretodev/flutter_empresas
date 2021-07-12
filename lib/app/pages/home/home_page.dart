@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
                 }
                 return SliverList(
                   delegate: SliverChildBuilderDelegate((_, index) {
-                    if (index == 1)
+                    if (index == 0)
                       return ResultsCountView(
                           countResults: state.companies.length);
                     final itemIdx = index - 1;

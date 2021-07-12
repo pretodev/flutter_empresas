@@ -18,6 +18,7 @@ dependencies:
   flow_builder: ^0.0.3
   google_fonts: ^2.1.0
   flutter_svg: ^0.22.0
+  string_validator: ^0.3.0
 
 dev_dependencies:
   bloc_test: ^8.0.2

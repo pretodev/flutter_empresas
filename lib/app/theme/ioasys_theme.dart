@@ -28,6 +28,26 @@ class IoasysTheme {
           borderSide: BorderSide(color: Colors.transparent),
           borderRadius: BorderRadius.circular(4),
         ),
+        errorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: IoasysColors.error),
+          borderRadius: BorderRadius.circular(4),
+        ),
+        border: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.transparent),
+          borderRadius: BorderRadius.circular(4),
+        ),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          primary: IoasysColors.primary,
+          elevation: 0,
+          minimumSize: Size.fromHeight(48.0),
+          textStyle: GoogleFonts.rubik().copyWith(
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }
