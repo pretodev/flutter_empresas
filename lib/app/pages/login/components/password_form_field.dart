@@ -6,10 +6,12 @@ class PasswordFormField extends StatefulWidget {
     Key? key,
     this.validator,
     this.onChanged,
+    this.focusNode,
   }) : super(key: key);
 
   final FormFieldValidator<String>? validator;
   final ValueChanged<String>? onChanged;
+  final FocusNode? focusNode;
 
   @override
   State<StatefulWidget> createState() => _PasswordFormFieldState();
@@ -28,6 +30,7 @@ class _PasswordFormFieldState extends State<PasswordFormField> {
       obscureText: obscureText,
       validator: widget.validator,
       onChanged: widget.onChanged,
+      focusNode: widget.focusNode,
       decoration: InputDecoration(
         suffixIcon: InkWell(
           onTap: tooglePasswordVisibility,
