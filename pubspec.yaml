@@ -15,7 +15,6 @@ dependencies:
   flutter_bloc: ^7.0.1
   dio: ^4.0.0
   flutter_secure_storage: ^4.2.0
-  flow_builder: ^0.0.3
   google_fonts: ^2.1.0
   flutter_svg: ^0.22.0
   string_validator: ^0.3.0
