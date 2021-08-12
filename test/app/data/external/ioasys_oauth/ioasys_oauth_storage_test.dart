@@ -1,5 +1,5 @@
-import 'package:empresas_flutter/app/data/external/ioasys_oauth/ioasys_oauth_storage.dart';
-import 'package:empresas_flutter/app/data/external/ioasys_oauth/iosys_aouth_token.dart';
+import 'package:empresas_flutter/shared/auth/ioasys_oauth/ioasys_oauth_storage.dart';
+import 'package:empresas_flutter/shared/auth/ioasys_oauth/iosys_aouth_token.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';

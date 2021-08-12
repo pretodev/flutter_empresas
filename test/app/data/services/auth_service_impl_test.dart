@@ -1,9 +1,7 @@
-import 'dart:math';
-
-import 'package:empresas_flutter/app/data/external/ioasys_oauth/oauth.dart';
-import 'package:empresas_flutter/app/data/models/credential.dart';
-import 'package:empresas_flutter/app/data/models/logged_user.dart';
-import 'package:empresas_flutter/app/data/services/auth_service_impl.dart';
+import 'package:empresas_flutter/app/modules/authentication/domain/entities/credential.dart';
+import 'package:empresas_flutter/app/modules/authentication/infra/data/services/auth_service_impl.dart';
+import 'package:empresas_flutter/shared/auth/models/logged_user.dart';
+import 'package:empresas_flutter/shared/auth/oauth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:fpdart/fpdart.dart';
 import 'package:mocktail/mocktail.dart';

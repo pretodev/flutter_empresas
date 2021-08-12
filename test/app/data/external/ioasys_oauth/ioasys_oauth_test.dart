@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:empresas_flutter/app/data/external/ioasys_oauth/ioasys_oauth.dart';
-import 'package:empresas_flutter/app/data/external/ioasys_oauth/ioasys_oauth_storage.dart';
-import 'package:empresas_flutter/app/data/external/ioasys_oauth/iosys_aouth_token.dart';
-import 'package:empresas_flutter/app/data/external/ioasys_oauth/oauth.dart';
+import 'package:empresas_flutter/shared/auth/ioasys_oauth/ioasys_oauth.dart';
+import 'package:empresas_flutter/shared/auth/ioasys_oauth/ioasys_oauth_storage.dart';
+import 'package:empresas_flutter/shared/auth/ioasys_oauth/iosys_aouth_token.dart';
+import 'package:empresas_flutter/shared/auth/oauth.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
@@ -28,7 +28,7 @@ void main() {
       dio = MockDio();
       when(() => dio.interceptors).thenReturn(MockInterceptors());
       storage = MockStorage();
-      oAuth = IoasysOAuth(dio: dio, storage: storage);
+      oAuth = IoasysOAuth(dio: dio, storage: storage, onUnauthorized: () {});
     });
 
     group('Token armazenado', () {
