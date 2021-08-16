@@ -1,9 +1,8 @@
 import 'package:dio/dio.dart';
+import 'package:empresas_flutter/shared/helpers/oauth_dio/ioasys_oauth.dart';
+import 'package:empresas_flutter/shared/helpers/oauth_dio/ioasys_oauth_storage.dart';
 import 'modules/authentication/authentication_module.dart';
 import 'modules/company/company_module.dart';
-import '../shared/auth/cubit/auth_cubit.dart';
-import '../shared/auth/ioasys_oauth/ioasys_oauth.dart';
-import '../shared/auth/ioasys_oauth/ioasys_oauth_storage.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -24,7 +23,6 @@ class AppModule extends Module {
         onUnauthorized: () => Modular.to.navigate('/login'),
       ),
     ),
-    Bind.singleton((i) => AuthCubit()),
   ];
 
   @override

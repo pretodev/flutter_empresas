@@ -1,4 +1,4 @@
-import '../../../../../../shared/auth/oauth.dart';
+import '../../../../../../shared/helpers/oauth_dio/oauth.dart';
 import '../../../domain/entities/company.dart';
 import '../../data/datasources/company_datasource.dart';
 

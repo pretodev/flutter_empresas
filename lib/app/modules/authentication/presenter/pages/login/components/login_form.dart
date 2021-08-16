@@ -12,13 +12,16 @@ class LoginForm extends StatefulWidget {
     required this.onFormFocusChanged,
     this.errorMessage = '',
     required this.onSubmit,
+    required this.emailChanged,
+    required this.passwordChanged,
   }) : super(key: key);
 
   final void Function(bool) onFormFocusChanged;
 
   final String errorMessage;
-
-  final void Function(Credential credential) onSubmit;
+  final VoidCallback onSubmit;
+  final void Function(String) emailChanged;
+  final void Function(String) passwordChanged;
 
   @override
   _LoginFormState createState() => _LoginFormState();
@@ -30,15 +33,9 @@ class _LoginFormState extends State<LoginForm> {
   final emailFocus = FocusNode();
   final passwordFocus = FocusNode();
 
-  String _email = '';
-  void setEmail(String email) => setState(() => _email = email);
-
-  String _password = '';
-  void setPassword(String password) => setState(() => _password = password);
-
   void submit() {
     if (!_key.currentState!.validate()) return;
-    widget.onSubmit(Credential(email: _email, password: _password));
+    widget.onSubmit();
   }
 
   void formFocus() {
@@ -71,7 +68,7 @@ class _LoginFormState extends State<LoginForm> {
               keyboardType: TextInputType.emailAddress,
               validator: (value) =>
                   value!.isEmpty || !isEmail(value) ? '' : null,
-              onChanged: setEmail,
+              onChanged: widget.emailChanged,
               focusNode: emailFocus,
             ),
           ),
@@ -79,7 +76,7 @@ class _LoginFormState extends State<LoginForm> {
             labelText: 'Senha',
             child: PasswordFormField(
               validator: (value) => value!.isEmpty ? '' : null,
-              onChanged: setPassword,
+              onChanged: widget.passwordChanged,
               focusNode: passwordFocus,
             ),
           ),

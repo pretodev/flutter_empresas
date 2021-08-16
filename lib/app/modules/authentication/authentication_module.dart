@@ -1,15 +1,20 @@
+import 'package:flutter_modular/flutter_modular.dart';
+
 import 'infra/data/services/auth_service_impl.dart';
-import 'presenter/pages/login/cubit/login_cubit.dart';
+import 'infra/external/ioasys_api/ioasys_auth_datasource.dart';
+import 'presenter/pages/login/login_controller.dart';
 import 'presenter/pages/login/login_page.dart';
+import 'presenter/pages/login/stores/login_store.dart';
 import 'presenter/pages/splash/splash_controller.dart';
 import 'presenter/pages/splash/splash_page.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 class AuthenticationModule extends Module {
   @override
   final binds = [
-    Bind.lazySingleton((i) => AuthServiceImpl(auth: i())),
-    Bind.factory((i) => LoginCubit(authService: i())),
+    Bind.lazySingleton((i) => IoasysAuthDatasource(i())),
+    Bind.lazySingleton((i) => AuthServiceImpl(i())),
+    Bind.lazySingleton((i) => LoginStore(i())),
+    Bind.factory((i) => LoginController(i())),
     Bind.factory((i) => SplashController(i())),
   ];
 

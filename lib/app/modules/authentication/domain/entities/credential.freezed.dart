@@ -16,7 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 class _$CredentialTearOff {
   const _$CredentialTearOff();
 
-  _Credential call({required String email, required String password}) {
+  _Credential call({String email = '', String password = ''}) {
     return _Credential(
       email: email,
       password: password,
@@ -111,11 +111,12 @@ class __$CredentialCopyWithImpl<$Res> extends _$CredentialCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Credential extends _Credential {
-  const _$_Credential({required this.email, required this.password})
-      : super._();
+  const _$_Credential({this.email = '', this.password = ''}) : super._();
 
+  @JsonKey(defaultValue: '')
   @override
   final String email;
+  @JsonKey(defaultValue: '')
   @override
   final String password;
 
@@ -148,8 +149,7 @@ class _$_Credential extends _Credential {
 }
 
 abstract class _Credential extends Credential {
-  const factory _Credential({required String email, required String password}) =
-      _$_Credential;
+  const factory _Credential({String email, String password}) = _$_Credential;
   const _Credential._() : super._();
 
   @override

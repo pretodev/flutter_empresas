@@ -1,13 +1,15 @@
-import '../entities/credential.dart';
-import '../../../../../shared/auth/models/logged_user.dart';
 import 'package:fpdart/fpdart.dart';
+
+import '../../../../../shared/helpers/errors.dart';
+import '../entities/credential.dart';
+import '../entities/user.dart';
 
 abstract class AuthService {
   const AuthService();
 
-  TaskEither<Exception, LoggedUser> currentUser();
+  TaskEither<Failure, User?> currentUser();
 
-  TaskEither<Exception, LoggedUser> login(Credential credential);
+  TaskEither<Failure, User> login(Credential credential);
 
-  Task<Unit> logout();
+  TaskEither<Failure, Unit> logout();
 }

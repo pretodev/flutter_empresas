@@ -1,46 +1,41 @@
-import '../../../domain/entities/credential.dart';
-import '../../../domain/services/auth_service.dart';
-import '../../../../../../shared/auth/models/logged_user.dart';
-import '../../../../../../shared/auth/oauth.dart';
 import 'package:fpdart/fpdart.dart';
 
-class AuthServiceImpl extends AuthService {
-  const AuthServiceImpl({required OAuth auth}) : _auth = auth;
+import '../../../../../../shared/helpers/errors.dart';
+import '../../../domain/entities/credential.dart';
+import '../../../domain/entities/user.dart';
+import '../../../domain/errors/errors.dart';
+import '../../../domain/services/auth_service.dart';
+import '../datasources/auth_datasource.dart';
 
-  final OAuth _auth;
+class AuthServiceImpl implements AuthService {
+  const AuthServiceImpl(this._authDatasource);
+
+  final AuthDatasource _authDatasource;
 
   @override
-  TaskEither<Exception, LoggedUser> currentUser() {
+  TaskEither<Failure, User?> currentUser() {
     return TaskEither(() async {
-      final token = await _auth.currentToken;
-      if (token == null) {
-        return Either.left(Exception('Usuario nao autenticado'));
+      final user = await _authDatasource.getLoggedUser();
+      if (user != null) {
+        return Either.right(user);
       }
-      return Either.right(token.data);
+      return Left(UserNotFound(message: 'Usuario não esta logado'));
     });
   }
 
   @override
-  TaskEither<Exception, LoggedUser> login(Credential credential) {
+  TaskEither<Failure, User> login(Credential credential) {
     return TaskEither(() async {
-      try {
-        final token = await _auth.requestToken(
-          email: credential.email,
-          password: credential.password,
-        );
-
-        return Either.right(token.data);
-      } on UnauthorizedUser catch (error) {
-        return Either.left(error);
-      }
+      final user = await _authDatasource.login(credential);
+      return Either.right(user);
     });
   }
 
   @override
-  Task<Unit> logout() {
-    return Task(() async {
-      await _auth.resetToken();
-      return unit;
+  TaskEither<Failure, Unit> logout() {
+    return TaskEither(() async {
+      await _authDatasource.logout();
+      return Either.right(unit);
     });
   }
 }

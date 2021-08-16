@@ -7,7 +7,7 @@ class Credential with _$Credential {
   const Credential._();
 
   const factory Credential({
-    required String email,
-    required String password,
+    @Default('') String email,
+    @Default('') String password,
   }) = _Credential;
 }
